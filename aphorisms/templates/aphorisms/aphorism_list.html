@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Aphorisms</title>
+{% endblock title %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static '/css/aphorism.css' %}">
+{% endblock head %}
+
+{% block page_title %}
+
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="page-content-header">
+                <div>
+                    <h2 class="mt-2 header">Aphorisms</h2>
+                </div>
+                <div>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'aphorisms:create' %}" class="mt-2 btn btn-success">Add Aphorism</a>
+                    {% endif %}
+                </div>
+            </div>
+            <hr class="mt-0 mb-4">
+        </div>
+    </div>
+
+{% endblock page_title %}
+
+{% block content %}
+    {% if object_list %}
+        {% for aphorism in object_list %}
+            <div class="quote">
+                <div class="quote-data">
+                    <span class="text" itemprop="text">
+                        “{{ aphorism.text }}”
+                    </span>
+                    <span>by <small class="author">{{ aphorism.author.first_name }} {{ aphorism.author.last_name }}</small>
+                        {% if user.id != aphorism.author.id and user_id != aphorism.author.id %}
+                            <a href="{% url 'aphorisms:user_aphorism_list' aphorism.author.id %}">See all</a>
+                        {% endif %}
+                    </span>
+                    <div class="tags">
+                        Tags:
+                        {% for tag in aphorism.tags.values %}
+                            <a class="tag" href="?tag_id={{ tag.id }}">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="quote-actions">
+                    {% if user.is_authenticated and user.id == aphorism.author_id %}
+                        <a class="action-button btn btn-primary" href="{% url 'aphorisms:update' aphorism.id %}">Edit</a>
+                        <a class="action-button btn btn-danger" href="{% url 'aphorisms:delete' aphorism.id %}">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endfor %}
+
+        <nav>
+            <div class="pager">
+
+                {% if page_obj.has_previous %}
+                    <div class="previous">
+                        <a href="?page={{ page_obj.previous_page_number }}{% if tag_id != 0 %}&tag_id={{ tag_id }}{% endif %}{% if user_id != 0 %}&user_id={{ user_id }}{% endif %}"><span aria-hidden="true">←</span> Previous</a>
+                    </div>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <div class="next">
+                        <a href="?page={{ page_obj.next_page_number }}{% if tag_id != 0 %}&tag_id={{ tag_id }}{% endif %}{% if user_id != 0 %}&user_id={{ user_id }}{% endif %}">Next <span aria-hidden="true">→</span></a>
+                    </div>
+                {% endif %}
+
+            </div>
+        </nav>
+    {% endif %}
+
+{% endblock content %}

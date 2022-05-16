@@ -1,0 +1,7 @@
+Django==3.9.6
+requests
+bs4
+django-crispy-forms
+djangorestframework
+markdown
+django-cors-headers

@@ -1,0 +1,62 @@
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+/* -------------  Messages start  ------------- */
+
+.messages {
+    margin-top: 10px;
+}
+
+.alert.alert-block {
+    list-style: none;
+}
+
+.alert.alert-block ul {
+    padding: 0;
+}
+
+.alert.alert-block li {
+    list-style: none;
+}
+
+/* -------------   Messages end   ------------- */
+
+/* ------------- Pagination start ------------- */
+
+.pager {
+    margin-bottom: 100px;
+}
+
+.pager {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pager div > a {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 15px;
+}
+
+.pager a {
+    color: #333;
+}
+
+.pager div > a:hover, .pager div > a:focus {
+    text-decoration: none;
+    background-color: #4582ec;
+}
+
+.pager a:hover {
+    border-color: transparent;
+    color: #fff;
+}
+
+/* -------------  Pagination end  ------------- */

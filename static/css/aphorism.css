@@ -1,0 +1,62 @@
+.page-content-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.quote {
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px #333333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quote-data {
+    width: 85%
+}
+
+.quote-actions .action-button {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.quote-actions>.action-button {
+    margin-bottom: 5px;
+}
+
+.quote span.text {
+    display: block;
+    margin-bottom: 5px;
+    font-size: large;
+    font-style: italic;
+}
+
+.quote small {
+    font-size: 87%;
+}
+
+.quote small.author {
+    font-weight: bold;
+    color: #3677E8;
+}
+
+.quote .tags {
+    margin-top: 10px;
+}
+
+.quote .tags .tag {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: small;
+    background-color: #7CA3E6;
+    text-decoration: none;
+}
+
+.quote .tags .tag:hover {
+    color: #134fb8;
+}
