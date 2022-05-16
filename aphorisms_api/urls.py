@@ -5,7 +5,7 @@ import aphorisms_api.views as views
 
 app_name = 'aphorisms_api'
 urlpatterns = [
-    path(r'api/aphorisms', views.get_aphorism_list),
     path(r'api/aphorisms', views.aphorism_list),
+    # path(r'api/aphorisms', views.aphorism_list),
     path(r'api/aphorisms/<int:pk>', views.aphorism_detail),
 ]
